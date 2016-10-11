@@ -1,0 +1,22 @@
+{
+  "name": "clinic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SerDimoa",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.17.2",
+    "browserify": "^13.1.0",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0"
+  },
+  "dependencies": {
+    "material-design-lite": "^1.2.1"
+  }
+}
