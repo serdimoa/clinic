@@ -1,8 +1,10 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass        = require('gulp-sass');
-var browserify  = require('gulp-browserify');
+var browserify  = require('browserify');
+var babelify = require('babelify');
 var uglify = require('gulp-uglify');
+var source = require('vinyl-source-stream');
 
 
 // Static Server + watching scss/html files
@@ -28,10 +30,16 @@ gulp.task('sass', function() {
 });
 
 gulp.task('js', function () {
-    return gulp.src('app/js/*.js')
-        .pipe(browserify())
-        .pipe(uglify())
+    return browserify({entries: 'app/js/index.js', debug: true})
+        .transform(babelify)
+        .bundle()
+        .pipe(source('index.js'))
         .pipe(gulp.dest('app/static/js'));
+    
+//    return gulp.src('app/js/*.js')
+//        .pipe(browserify())
+//        .pipe(uglify())
+//        .pipe(gulp.dest('app/static/js'));
 });
 
 gulp.task('js-watch', ['js'], function (done) {
