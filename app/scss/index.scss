@@ -14,8 +14,41 @@ $mq-static-breakpoint: desktop;
 // to this list, ordered by width, e.g. (mobile, tablet, desktop).
 $mq-show-breakpoints: (mobile, mobileLandscape, tablet, desktop, wide);
 @import '../../node_modules/material-design-lite/src/material-design-lite';
+@import '../../node_modules/vanilla-datatables/vanilla-datatables';
 @import '../../node_modules/flickity/css/flickity';
 @import 'mq';
+.dataTable-selectWrapper {
+    display: none;
+}
+
+.dataTable-top {
+    .dataTable-pagination {
+        display: none;
+    }
+}
+.dataTable-pagination{
+    @include mq($until: tablet) {
+            width: 100%;
+    }
+}
+.dataTable-sorter:before {
+    bottom: 10px;
+}
+
+.dataTable-search {
+    width: 100%;
+    text-align: right;
+    &:before {
+        content: "Поиск: ";
+    }
+    .dataTable-input {
+        width: 40%;
+        &::-webkit-input-placeholder {
+            opacity: 0;
+        }
+    }
+}
+
 .img-responsive {
     display: block;
     max-width: 100%;
@@ -102,16 +135,22 @@ body {
         padding-top: 45px;
         .mdl-navigation__link {
             padding: 10px 0px 10px 40px;
-            color: #212121;
+            color: #6b6d76;
             font: 400 22px / 1.3em Ubuntu;
             transition: background .3s ease-in, color .3s ease-in;
+            &.active {
+                color: #212121;
+                font-weight: 700;
+            }
             &.darkblue {
                 color: #ffffff;
                 background: #1c4689;
+                font-weight: 700;
             }
             &.red {
                 background: #e22737;
                 color: #ffffff;
+                font-weight: 700;
             }
             &:hover {
                 background-color: #2196f3;
@@ -160,6 +199,7 @@ body {
     &__content {
         padding: 18px 4px 25px 27px;
         position: relative;
+        
         &.prof {
             padding-top: 2.6px;
             h2 {
@@ -169,6 +209,9 @@ body {
             }
         }
         h2 {
+            @include mq($until:tablet){
+            font-size: 25px;
+            }
             color: #ffffff;
             font: 700 32.02px / 1em Ubuntu;
             margin: 0;
@@ -210,19 +253,15 @@ body {
     &.yellow {
         background-color: #ff9800;
     }
-    
-    &--small{
+    &--small {
         min-height: 80px;
-        &:before{
+        &:before {
             height: 80px;
-                    width: 40px;
-
+            width: 40px;
             background-size: contain;
         }
     }
-   
 }
-
 
 .sub-nav {
     -webkit-padding-start: 0;
@@ -230,8 +269,8 @@ body {
     display: flex;
     margin: 0 auto;
     @include mq($until: desktop) {
-            display: block;
-        }
+        display: block;
+    }
     li {
         float: left;
         border-left: 1px solid #fff;
@@ -282,19 +321,88 @@ body {
     }
     &--title {
         color: #616161;
+        display: inline;
         font: 300 40px / 48px Ubuntu;
+        &.single {
+            border-bottom: 2px #616161 solid;
+            margin-left: 29px;
+        }
     }
-    
-    &--single{
+    &--single {
         margin-top: 28px;
         background-color: #ffffff;
         box-shadow: 3px 5px 4px 0.00px rgba(0, 0, 0, 0.14);
         padding: 28px;
-        color: #212121;
-        font: 400 24px Ubuntu;
+       
+        & * {
+            color: #616161;
+            font-size: 24px;
+            font-family: Ubuntu;
+        }
+        & a {
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        & img {
+            padding-right: 28px;
+        }
+        & p {
+            line-height: 1em;
+        }
+        & h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 50px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+        & table {
+            width: 100%;
+            @extend .mdl-data-table;
+            @extend .mdl-shadow--2dp;
+            @include mq($until: desktop) {
+                white-space: normal;
+                caption {
+                    background-image: none;
+                }
+                 thead {
+                    display: none;
+                }
+                 tbody td {
+                    display: block;
+                     height: auto;
+                    padding: .6rem;
+                }
+                tbody tr td:first-child {
+                    background: #666;
+                    color: #fff;
+                }
+                tbody td:before {
+                    content: attr(data-th);
+                    font-weight: bold;
+                    display: inline-block;
+                    width: auto;
+                    padding-right: 10px;
+                }
+            }
+            td,
+            th {
+                text-align: left;
+            }
+            th {
+                font: 500 30px / 60px Ubuntu;
+            }
+            td {
+                font: 300 30px / 48px Ubuntu;
+            }
+        }
     }
-    
-    &--list {}
+    &--list {
+        margin-top: 29px;
+    }
     &--item {
         //        height: 185px;
         background-color: #ffffff;
@@ -346,24 +454,41 @@ body {
             display: none;
         }
     }
-    
-    &--breadcrumb {
-        color: #616161;
-            line-height: 2em;
-
-        a{
-        
-        color: #616161;
-        font: 300 24px Ubuntu;
-            line-height: 1em;
-        text-transform: uppercase;
-        text-decoration: none;
-        
-        &:hover{
-            text-decoration: underline;
-
+    &--footer {
+        margin-top: 24px;
+        border-top: rgba(0, 0, 0, 0.14) solid 2px;
+        padding-top: 25px;
+        .news-footer {
+            &--social,
+            &--date {
+                @include mq($until: desktop) {
+                    width: 100%;
+                    padding-bottom: 15px;
+                    display: block;
+                }
+                width: 50%;
+                display: inline;
+            }
+            &--date span {
+                float: right;
+            }
         }
     }
+    &--breadcrumb {
+        color: #616161;
+        line-height: 2em;
+        margin-left: 29px;
+        margin-top: 23px;
+        a {
+            color: #616161;
+            font: 300 24px Ubuntu;
+            line-height: 1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }
 

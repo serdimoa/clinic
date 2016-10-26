@@ -19,6 +19,7 @@
     "gulp-browserify": "^0.5.1",
     "gulp-sass": "^2.3.2",
     "gulp-uglify": "^2.0.0",
+    "vanilla-datatables": "0.0.8",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
