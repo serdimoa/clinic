@@ -248,7 +248,7 @@ body {
     }
     &:before {
         content: '';
-        background: url(/static/images/marker.png) no-repeat;
+        background: url(../../static/images/marker.png) no-repeat;
         position: absolute;
         right: 0;
         top: 10px;
