@@ -12,7 +12,7 @@ $mq-static-breakpoint: desktop;
 // If you want to display the currently active breakpoint in the top
 // right corner of your site during development, add the breakpoints
 // to this list, ordered by width, e.g. (mobile, tablet, desktop).
-$mq-show-breakpoints: (mobile, mobileLandscape, tablet, desktop, wide);
+// $mq-show-breakpoints: (mobile, mobileLandscape, tablet, desktop, wide);
 @import '../../node_modules/material-design-lite/src/material-design-lite';
 @import '../../node_modules/vanilla-datatables/vanilla-datatables';
 @import '../../node_modules/flickity/css/flickity';
@@ -84,7 +84,7 @@ body {
         width: 100%;
         height: 275px;
         text-align: center;
-        @include mq($until: desktop) {
+        @include mq($until: wide) {
             height: auto;
         }
         img {
@@ -107,12 +107,18 @@ body {
     height: 83px;
     .mdl-layout-spacer {
         color: #ffffff;
-        font: 700 51px / 30px Ubuntu;
+        font: 700 29px / 30px Ubuntu;
+        position: fixed;
+        top:2px;
         text-align: center;
+        @include mq($until: wide) {
+            font-size: 1.7em;
+            text-align: center;
+        }
         @include mq($until: tablet) {
             font-size: 1em;
+            line-height: 1.2em;
             text-align: left;
-            position: fixed;
         }
     }
 }
@@ -206,14 +212,17 @@ body {
                 font-size: 2.1em;
                 line-height: 1;
                 margin-bottom: 0.1em;
+                @include mq($until:wide){
+                    font-size: 21px;
+                }
             }
         }
         h2 {
-            @include mq($until:tablet){
-            font-size: 25px;
+            @include mq($until:wide){
+                font-size: 20px;
             }
             color: #ffffff;
-            font: 700 32.02px / 1em Ubuntu;
+            font: 700 30.02px / 1em Ubuntu;
             margin: 0;
             white-space: nowrap;
             transform: scale(0.844, 0.842) translateX(-0.844em);
@@ -222,6 +231,7 @@ body {
             margin-top: .2em;
         }
         p {
+            
             color: #ffffff;
             font: 400 30.5px / 1em Ubuntu;
             transform: scale(0.844, 0.842) translateX(-0.544em);
@@ -229,6 +239,10 @@ body {
             @include mq($until: desktop) {
                 display: block;
                 font-size: 1.5em;
+            }
+            @include mq($until:wide){
+                font-size: 22px;
+
             }
         }
     }
@@ -287,6 +301,11 @@ body {
             @include mq($until: desktop) {
                 display: block;
                 font-size: 1em;
+                width: 100%;
+            }
+            @include mq($until: wide) {
+                display: block;
+                font-size: 1.1em;
                 width: 100%;
             }
             &:hover {
@@ -363,8 +382,9 @@ body {
             width: 100%;
             @extend .mdl-data-table;
             @extend .mdl-shadow--2dp;
+            white-space: normal;
             @include mq($until: desktop) {
-                white-space: normal;
+                
                 caption {
                     background-image: none;
                 }
@@ -394,9 +414,12 @@ body {
             }
             th {
                 font: 500 30px / 60px Ubuntu;
+
             }
             td {
+
                 font: 300 30px / 48px Ubuntu;
+                                font-size: 2vw;
             }
         }
     }
@@ -405,6 +428,10 @@ body {
     }
     &--item {
         //        height: 185px;
+        @include mq($from:tablet, $until: wide) {
+            height: 150px;
+        }
+
         background-color: #ffffff;
         box-shadow: 3px 5px 4px 0.00px rgba(0, 0, 0, 0.14);
         border-top: rgba(0, 0, 0, 0.14) solid 1px;
@@ -415,7 +442,10 @@ body {
         }
     }
     &--img {
-        width: 280px;
+        @include mq($from: wide) {
+            width: 280px;
+        }
+        
         @include mq($until: desktop) {
             display: none;
         }
@@ -424,6 +454,9 @@ body {
         }
     }
     &--content {
+        @include mq($until: wide) {
+            overflow: hidden;
+        }
         padding: 10px 0px 0px 0px;
     }
     &--date {
@@ -533,6 +566,7 @@ body {
             width: 100%;
             margin-left: 0;
         }
+
         &--logo {
             display: block;
             margin-bottom: 35px;
@@ -565,6 +599,7 @@ body {
             color: #ffffff;
             font: 300 20px / 50px Ubuntu;
             text-align: right;
+            padding-right: 20px;
         }
     }
 }

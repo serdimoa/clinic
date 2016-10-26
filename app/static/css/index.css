@@ -11194,34 +11194,6 @@ http://flickity.metafizzy.co
 .flickity-page-dots .dot.is-selected {
   opacity: 1; }
 
-body:before {
-  background-color: #FCF8E3;
-  border-bottom: 1px solid #FBEED5;
-  border-left: 1px solid #FBEED5;
-  color: #C09853;
-  font: small-caption;
-  padding: 3px 6px;
-  pointer-events: none;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 100; }
-  @media (min-width: 20em) {
-    body:before {
-      content: "mobile ≥ 320px (20em)"; } }
-  @media (min-width: 30em) {
-    body:before {
-      content: "mobileLandscape ≥ 480px (30em)"; } }
-  @media (min-width: 46.25em) {
-    body:before {
-      content: "tablet ≥ 740px (46.25em)"; } }
-  @media (min-width: 61.25em) {
-    body:before {
-      content: "desktop ≥ 980px (61.25em)"; } }
-  @media (min-width: 81.25em) {
-    body:before {
-      content: "wide ≥ 1300px (81.25em)"; } }
-
 .dataTable-selectWrapper {
   display: none; }
 
@@ -11275,7 +11247,7 @@ body {
     width: 100%;
     height: 275px;
     text-align: center; }
-    @media (max-width: 61.24em) {
+    @media (max-width: 81.24em) {
       .main-carousel .carousel-cell {
         height: auto; } }
 
@@ -11291,13 +11263,19 @@ body {
   height: 83px; }
   .mdl-layout__header-row .mdl-layout-spacer {
     color: #ffffff;
-    font: 700 51px / 30px Ubuntu;
+    font: 700 29px / 30px Ubuntu;
+    position: fixed;
+    top: 2px;
     text-align: center; }
+    @media (max-width: 81.24em) {
+      .mdl-layout__header-row .mdl-layout-spacer {
+        font-size: 1.7em;
+        text-align: center; } }
     @media (max-width: 46.24em) {
       .mdl-layout__header-row .mdl-layout-spacer {
         font-size: 1em;
-        text-align: left;
-        position: fixed; } }
+        line-height: 1.2em;
+        text-align: left; } }
 
 .mdl-layout__header {
   background-color: #2f3950; }
@@ -11371,18 +11349,21 @@ body {
         font-size: 2.1em;
         line-height: 1;
         margin-bottom: 0.1em; }
+        @media (max-width: 81.24em) {
+          .map-link__content.prof h2 {
+            font-size: 21px; } }
     .map-link__content h2 {
       color: #ffffff;
-      font: 700 32.02px / 1em Ubuntu;
+      font: 700 30.02px / 1em Ubuntu;
       margin: 0;
       white-space: nowrap;
       transform: scale(0.844, 0.842) translateX(-0.844em);
       left: 0;
       margin-bottom: .4em;
       margin-top: .2em; }
-      @media (max-width: 46.24em) {
+      @media (max-width: 81.24em) {
         .map-link__content h2 {
-          font-size: 25px; } }
+          font-size: 20px; } }
     .map-link__content p {
       color: #ffffff;
       font: 400 30.5px / 1em Ubuntu;
@@ -11392,6 +11373,9 @@ body {
         .map-link__content p {
           display: block;
           font-size: 1.5em; } }
+      @media (max-width: 81.24em) {
+        .map-link__content p {
+          font-size: 22px; } }
   .map-link:before {
     content: '';
     background: url(/static/images/marker.png) no-repeat;
@@ -11440,6 +11424,11 @@ body {
         .sub-nav li a {
           display: block;
           font-size: 1em;
+          width: 100%; } }
+      @media (max-width: 81.24em) {
+        .sub-nav li a {
+          display: block;
+          font-size: 1.1em;
           width: 100%; } }
       .sub-nav li a:hover {
         background-color: #145ea8; }
@@ -11494,34 +11483,34 @@ body {
       margin-bottom: 10px;
       text-decoration: underline; }
     .home-news--single table {
-      width: 100%; }
+      width: 100%;
+      white-space: normal; }
       @media (max-width: 61.24em) {
-        .home-news--single table {
-          white-space: normal; }
-          .home-news--single table caption {
-            background-image: none; }
-          .home-news--single table thead {
-            display: none; }
-          .home-news--single table tbody td {
-            display: block;
-            height: auto;
-            padding: .6rem; }
-          .home-news--single table tbody tr td:first-child {
-            background: #666;
-            color: #fff; }
-          .home-news--single table tbody td:before {
-            content: attr(data-th);
-            font-weight: bold;
-            display: inline-block;
-            width: auto;
-            padding-right: 10px; } }
+        .home-news--single table caption {
+          background-image: none; }
+        .home-news--single table thead {
+          display: none; }
+        .home-news--single table tbody td {
+          display: block;
+          height: auto;
+          padding: .6rem; }
+        .home-news--single table tbody tr td:first-child {
+          background: #666;
+          color: #fff; }
+        .home-news--single table tbody td:before {
+          content: attr(data-th);
+          font-weight: bold;
+          display: inline-block;
+          width: auto;
+          padding-right: 10px; } }
       .home-news--single table td,
       .home-news--single table th {
         text-align: left; }
       .home-news--single table th {
         font: 500 30px / 60px Ubuntu; }
       .home-news--single table td {
-        font: 300 30px / 48px Ubuntu; }
+        font: 300 30px / 48px Ubuntu;
+        font-size: 2vw; }
   .home-news--list {
     margin-top: 29px; }
   .home-news--item {
@@ -11530,17 +11519,24 @@ body {
     border-top: rgba(0, 0, 0, 0.14) solid 1px;
     border-left: rgba(0, 0, 0, 0.14) solid 1px;
     border-right: rgba(0, 0, 0, 0.14) solid 1px; }
+    @media (min-width: 46.25em) and (max-width: 81.24em) {
+      .home-news--item {
+        height: 150px; } }
     .home-news--item.mdl-grid {
       padding: 0 !important; }
-  .home-news--img {
-    width: 280px; }
-    @media (max-width: 61.24em) {
-      .home-news--img {
-        display: none; } }
-    .home-news--img.mdl-cell {
-      margin: 0; }
+  @media (min-width: 81.25em) {
+    .home-news--img {
+      width: 280px; } }
+  @media (max-width: 61.24em) {
+    .home-news--img {
+      display: none; } }
+  .home-news--img.mdl-cell {
+    margin: 0; }
   .home-news--content {
     padding: 10px 0px 0px 0px; }
+    @media (max-width: 81.24em) {
+      .home-news--content {
+        overflow: hidden; } }
   .home-news--date {
     color: #757575;
     display: block;
@@ -11653,4 +11649,5 @@ body {
       display: block;
       color: #ffffff;
       font: 300 20px / 50px Ubuntu;
-      text-align: right; }
+      text-align: right;
+      padding-right: 20px; }
